@@ -129,7 +129,7 @@ class Oferta(SQLModel, table=True):
     id_variedad: Optional[str] = Field(
         default=None, primary_key=True, foreign_key="variedad.id_variedad"
     )
-    fecha_inicio: Optional[date] = None
+    fecha_inicio: Optional[date] = Field(default=None, primary_key=True)
     fecha_fin: date
     descuento: float
     fidelidad: Optional[str] = None
@@ -172,7 +172,9 @@ class Carrito(SQLModel, table=True):
     id_tienda: Optional[str] = Field(
         default=None, primary_key=True, foreign_key="tienda.id_tienda"
     )
-    id_carrito: Optional[int] = Field(default=None, primary_key=True, sa_column_kwargs={"autoincrement": True})
+    id_carrito: Optional[int] = Field(
+        default=None, primary_key=True, sa_column_kwargs={"autoincrement": True}
+    )
     fecha: str
     dni_cliente: str = Field(foreign_key="cliente.dni")
 
@@ -206,7 +208,9 @@ class TieneCafetera(SQLModel, table=True):
     modelo_caf: Optional[str] = Field(
         default=None, primary_key=True, foreign_key="cafetera.modelo"
     )
-    dni_cliente: Optional[str] = Field(default=None, foreign_key="cliente.dni")
+    dni_cliente: Optional[str] = Field(
+        default=None, primary_key=True, foreign_key="cliente.dni"
+    )
 
 
 class VarEnCafetera(SQLModel, table=True):
