@@ -11,7 +11,5 @@ def uuid():
     return uuid4().hex[:15]
 
 def choose(l: list):
-    print(l, sep="\n")
-    print(0, len(l)-1)
     index = randint(0,len(l)-1)
     return l.pop(index)
